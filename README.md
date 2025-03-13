@@ -22,7 +22,7 @@ If you'd like to run BitSkye locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/BitSkye.git
+   git clone https://github.com/Dalfin-byte/Dalfin-Byte.github.io
    ```
 2. Navigate to the project directory:
    ```Bash
