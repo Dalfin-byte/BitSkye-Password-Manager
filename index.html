@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BitSkye – Open-Source Secure Password Generator</title>
+  <!-- Bootswatch Darkly Theme (Bootstrap 5 Dark Theme) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/darkly/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Background & Font */
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e0e0;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      position: relative;
+    }
+    .content-container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Navigation Bar */
+    .navbar {
+      background-color: #131313 !important;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      color: #20c997 !important;  /* Teal accent */
+    }
+    .nav-link {
+      font-weight: 500;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 1rem;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #20c997;  /* Teal accent */
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0.5rem auto 2rem auto;
+      color: #b0b0b0;
+    }
+    .hero-btn {
+      background-color: #20c997;
+      border-color: #20c997;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      transition: background 0.3s;
+    }
+    .hero-btn:hover {
+      background-color: #17a287;
+      border-color: #17a287;
+    }
+
+    /* Section Headings */
+    h2.section-title {
+      color: #20c997;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Card Styling */
+    .card {
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #1e1e1e;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    .card-header {
+      background-color: transparent;
+      border-bottom: 1px solid #333;
+    }
+
+    /* Input Range */
+    input[type="range"]::-webkit-slider-thumb {
+      background: #20c997;
+      border: 2px solid #fff;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    input[type="range"]::-moz-range-thumb {
+      background: #20c997;
+      border: 2px solid #fff;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    /* Toggle Icons */
+    .form-check-label .fas {
+      margin-right: 8px;
+      color: #20c997;
+    }
+
+    /* Strength Bar */
+    #strengthBar {
+      height: 20px;
+      transition: width 0.3s;
+    }
+
+    /* Sections */
+    .section {
+      padding: 3rem 1rem;
+    }
+
+    /* FAQ Section */
+    .accordion-button {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #20c997;
+      color: #fff;
+    }
+
+    /* About Section */
+    .about-section {
+      background-color: #121212;
+      color: #b0b0b0;
+    }
+    .about-section a {
+      color: #20c997;
+    }
+    
+    /* New Security Tips Section */
+    .tips-section {
+      background-color: #1a1a1a;
+      color: #b0b0b0;
+    }
+    .tips-section h2 {
+      color: #20c997;
+      margin-bottom: 1.5rem;
+    }
+    .tips-section li {
+      margin-bottom: 0.75rem;
+    }
+
+    /* New Testimonials Section */
+    .testimonials-section {
+      background-color: #1a1a1a;
+      color: #b0b0b0;
+    }
+    .testimonials-section h2 {
+      color: #20c997;
+      margin-bottom: 1.5rem;
+    }
+    .testimonial {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .testimonial-author {
+      text-align: right;
+      font-weight: 500;
+      color: #20c997;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 0;
+      text-align: center;
+      background-color: #131313;
+      color: #7a7a7a;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-container">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">BitSkye</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#generator">Generator</a></li>
+            <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
+            <li class="nav-item"><a class="nav-link" href="#how">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero">
+      <h1>BitSkye: Empower Your Security</h1>
+      <p>BitSkye is a open-source password generator. It uses one of the most <b>SECURE</b> enctyption named: xChaCha20</p>
+      <button class="btn hero-btn" onclick="document.getElementById('generator').scrollIntoView({behavior: 'smooth'});">
+        Get Started
+      </button>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="section-title text-center">Features</h2>
+        <div class="row text-center">
+          <div class="col-md-4 mb-4">
+            <i class="fas fa-lock fa-2x"></i>
+            <h5 class="mt-2">Secure Generation</h5>
+            <p>Utilizes cryptographically secure methods to create robust passwords.</p>
+          </div>
+          <div class="col-md-4 mb-4">
+            <i class="fas fa-sliders-h fa-2x"></i>
+            <h5 class="mt-2">Customizable Options</h5>
+            <p>Adjust length, character sets, and generate multiple passwords.</p>
+          </div>
+          <div class="col-md-4 mb-4">
+            <i class="fas fa-chart-line fa-2x"></i>
+            <h5 class="mt-2">Real-time Strength Evaluation</h5>
+            <p>Instantly view the strength of your password with an entropy-based evaluator.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how" class="section">
+      <div class="container">
+        <h2 class="section-title text-center">How It Works</h2>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <i class="fas fa-code fa-2x"></i>
+            <strong>Local Generation:</strong>
+            <p>Your passwords are generated entirely in your browser using the <code>window.crypto</code> API—no data is transmitted or stored.</p>
+          </div>
+          <div class="col-md-6 mb-4">
+            <i class="fas fa-cogs fa-2x"></i>
+            <strong>Custom Settings:</strong>
+            <p>Use our intuitive slider and toggles to customize your password criteria for maximum security.</p>
+          </div>
+          <div class="col-md-6 mb-4">
+            <i class="fas fa-tachometer-alt fa-2x"></i>
+            <strong>Strength Evaluation:</strong>
+            <p>Our built‑in evaluator calculates entropy, providing clear feedback on your password's strength.</p>
+          </div>
+          <div class="col-md-6 mb-4">
+            <i class="fas fa-shield-alt fa-2x"></i>
+            <strong>Open-Source & Private:</strong>
+            <p>BitSkye is open‑source, and all processing happens locally in your browser to protect your privacy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Generator Section -->
+    <section id="generator" class="section">
+      <div class="container">
+        <div class="row">
+          <!-- Left Column: Settings -->
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h4 class="mb-0">Password Settings</h4>
+              </div>
+              <div class="card-body">
+                <!-- Password Length Slider -->
+                <div class="mb-3">
+                  <label for="lengthSlider" class="form-label">
+                    Password Length: <span id="lengthValue" class="fw-bold">16</span>
+                  </label>
+                  <input type="range" class="form-range" min="8" max="64" value="16" id="lengthSlider">
+                </div>
+                <!-- Toggles with Icons -->
+                <div class="form-check form-switch mb-2">
+                  <input class="form-check-input" type="checkbox" id="upperCaseToggle" checked>
+                  <label class="form-check-label" for="upperCaseToggle">
+                    <i class="fas fa-font"></i> Include Uppercase Letters
+                  </label>
+                </div>
+                <div class="form-check form-switch mb-2">
+                  <input class="form-check-input" type="checkbox" id="lowerCaseToggle" checked>
+                  <label class="form-check-label" for="lowerCaseToggle">
+                    <i class="fas fa-bold"></i> Include Lowercase Letters
+                  </label>
+                </div>
+                <div class="form-check form-switch mb-2">
+                  <input class="form-check-input" type="checkbox" id="digitsToggle" checked>
+                  <label class="form-check-label" for="digitsToggle">
+                    <i class="fas fa-hashtag"></i> Include Digits
+                  </label>
+                </div>
+                <div class="form-check form-switch mb-4">
+                  <input class="form-check-input" type="checkbox" id="punctuationToggle" checked>
+                  <label class="form-check-label" for="punctuationToggle">
+                    <i class="fas fa-question"></i> Include Punctuation
+                  </label>
+                </div>
+                <!-- Generate Button -->
+                <button id="generateBtn" class="btn btn-primary w-100">
+                  <i class="fas fa-key"></i> Generate Passwords
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Right Column: Advanced Options & Strength -->
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h4 class="mb-0">Advanced Options</h4>
+              </div>
+              <div class="card-body">
+                <!-- Multiple Passwords -->
+                <div class="mb-3">
+                  <label for="multipleCount" class="form-label">
+                    <i class="fas fa-clone"></i> Generate Multiple Passwords:
+                  </label>
+                  <input type="number" class="form-control" id="multipleCount" value="1" min="1">
+                </div>
+                <!-- Password Strength Evaluator -->
+                <div id="strengthSection" style="display: none;">
+                  <h5 class="mt-3">Password Strength:</h5>
+                  <div class="progress">
+                    <div id="strengthBar" class="progress-bar" role="progressbar" style="width: 0%">0%</div>
+                  </div>
+                  <small id="strengthText" class="text-light"></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Generated Passwords -->
+        <div class="row">
+          <div class="col-12">
+            <h3 class="text-light mb-3">Generated Passwords:</h3>
+            <ul id="passwordList" class="list-group"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+      <div class="container">
+        <h2 class="section-title text-center">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+          <!-- FAQ 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                What is password entropy?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Password entropy measures how unpredictable a password is. It is calculated based on the size of the character set and the password length, expressed in bits.
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                How does BitSkye generate secure passwords?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                BitSkye uses the browser's cryptographically secure random number generator (<code>window.crypto</code>) to ensure every generated password is highly unpredictable.
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                Is it safe to generate passwords in my browser?
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes. All password generation happens locally in your browser. BitSkye does not store or transmit any generated data.
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 4 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                Why does password length matter?
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Longer passwords exponentially increase the number of possible combinations, making them significantly harder to crack.
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 5 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                Is any of my data stored?
+              </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                BitSkye is completely open‑source and runs entirely in your browser. No data, including generated passwords, is ever stored or transmitted.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <h2 class="section-title text-center">About BitSkye</h2>
+        <p>
+          BitSkye is an open‑source password generator designed with your security and privacy in mind.
+          Our code is freely available on GitHub so you can review, contribute, or modify it to suit your needs.
+          We do not store or transmit any generated passwords—everything happens locally in your browser.
+        </p>
+        <p>
+          Whether you're a security professional or simply looking for a robust way to generate secure passwords,
+          BitSkye offers a modern, feature‑rich, and user‑friendly solution.
+        </p>
+        <p>
+          <strong>GitHub Repository:</strong> <a href="https://github.com/your-repo/BitSkye" target="_blank">https://github.com/your-repo/BitSkye</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Security Tips Section -->
+    <section id="tips" class="section tips-section">
+      <div class="container">
+        <h2 class="section-title text-center">Security Tips</h2>
+        <ul>
+          <li>Always use a unique password for every account.</li>
+          <li>Change your passwords regularly, especially if you suspect a breach.</li>
+          <li>Consider using a password manager to keep track of your credentials securely.</li>
+          <li>Never share your passwords or write them down in insecure locations.</li>
+          <li>Enable two-factor authentication wherever possible for added security.</li>
+        </ul>
+      </div>
+    </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 BitSkye. All rights reserved.</p>
+      <p>This site is open‑source and no data is stored or transmitted.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Returns an unbiased random integer in [0, max)
+    function getRandomInt(max) {
+      const array = new Uint32Array(1);
+      window.crypto.getRandomValues(array);
+      return array[0] % max;
+    }
+
+    // Generate a password with the specified length and options
+    function generatePassword(length, options) {
+      let alphabet = "";
+      if (options.upper) alphabet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      if (options.lower) alphabet += "abcdefghijklmnopqrstuvwxyz";
+      if (options.digits) alphabet += "0123456789";
+      if (options.punctuation) alphabet += "!@#$%^&*()_+[]{}|;:,.<>/?";
+      if (alphabet.length === 0) return "No character set selected!";
+      let pwd = "";
+      for (let i = 0; i < length; i++) {
+        const index = getRandomInt(alphabet.length);
+        pwd += alphabet[index];
+      }
+      return pwd;
+    }
+
+    // Calculate password entropy (bits)
+    function calculateEntropy(length, options) {
+      let alphabet = "";
+      if (options.upper) alphabet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      if (options.lower) alphabet += "abcdefghijklmnopqrstuvwxyz";
+      if (options.digits) alphabet += "0123456789";
+      if (options.punctuation) alphabet += "!@#$%^&*()_+[]{}|;:,.<>/?";
+      const n = alphabet.length;
+      if (n === 0) return 0;
+      return length * Math.log2(n);
+    }
+
+    // Evaluate password strength and update the progress bar
+    function evaluateStrength(entropy) {
+      const strengthBar = document.getElementById("strengthBar");
+      const strengthText = document.getElementById("strengthText");
+      let strengthPercent = 0;
+      let strengthLabel = "";
+
+      if (entropy < 50) {
+        strengthPercent = 33;
+        strengthLabel = "Weak";
+        strengthBar.className = "progress-bar bg-danger";
+      } else if (entropy < 80) {
+        strengthPercent = 66;
+        strengthLabel = "Moderate";
+        strengthBar.className = "progress-bar bg-warning";
+      } else {
+        strengthPercent = 100;
+        strengthLabel = "Strong";
+        strengthBar.className = "progress-bar bg-success";
+      }
+
+      strengthBar.style.width = strengthPercent + "%";
+      strengthBar.textContent = strengthPercent + "%";
+      strengthText.textContent = `Entropy: ${entropy.toFixed(2)} bits — ${strengthLabel}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const lengthSlider = document.getElementById("lengthSlider");
+      const lengthValue = document.getElementById("lengthValue");
+      const upperCaseToggle = document.getElementById("upperCaseToggle");
+      const lowerCaseToggle = document.getElementById("lowerCaseToggle");
+      const digitsToggle = document.getElementById("digitsToggle");
+      const punctuationToggle = document.getElementById("punctuationToggle");
+      const multipleCount = document.getElementById("multipleCount");
+      const generateBtn = document.getElementById("generateBtn");
+      const passwordList = document.getElementById("passwordList");
+      const strengthSection = document.getElementById("strengthSection");
+
+      // Update the displayed length value
+      lengthSlider.addEventListener("input", function() {
+        lengthValue.textContent = lengthSlider.value;
+      });
+
+      // Generate passwords on button click
+      generateBtn.addEventListener("click", function() {
+        const length = parseInt(lengthSlider.value);
+        const options = {
+          upper: upperCaseToggle.checked,
+          lower: lowerCaseToggle.checked,
+          digits: digitsToggle.checked,
+          punctuation: punctuationToggle.checked
+        };
+        const count = parseInt(multipleCount.value);
+
+        // Clear previous results
+        passwordList.innerHTML = "";
+
+        // Calculate and display strength for a sample password
+        const entropy = calculateEntropy(length, options);
+        evaluateStrength(entropy);
+        strengthSection.style.display = "block";
+
+        // Generate and display the requested number of passwords
+        for (let i = 0; i < count; i++) {
+          const pwd = generatePassword(length, options);
+          const li = document.createElement("li");
+          li.className = "list-group-item bg-dark text-light";
+          li.textContent = pwd;
+          passwordList.appendChild(li);
+        }
+      });
+    });
+  </script>
+
+  <!-- Bootstrap JS (with Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

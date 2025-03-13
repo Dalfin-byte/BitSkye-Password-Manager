@@ -43,7 +43,7 @@ def pause():
 def welcome_panel():
     """Displays a welcome message in a panel."""
     welcome_text = (
-        "[bold green]Welcome to the Advanced Password Generator![/bold green]\n\n"
+        "[bold green]Welcome to the BitShark Password Generator![/bold green]\n\n"
         "This tool allows you to create secure passwords, customize character sets, "
         "and even encrypt your passwords using XChaCha20.\n\n"
         "Use the menu below to configure your settings, generate passwords, and more."
