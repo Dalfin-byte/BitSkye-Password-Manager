@@ -11,7 +11,7 @@
 
 ## How to Use
 
-1. Visit [BitSkye Website](https://github.com/Dalfin-byte/Dalfin-Byte.github.io) to access the tool.
+1. Visit [https://bitskye.xyz/](https://bitskye.xyz/) to access the tool.
 2. Select the desired password length and complexity.
 3. Click the "Generate" button to create your secure password or select the quantity for multiple passwords to be created.
 4. Copy the generated password and use it for your online accounts.
