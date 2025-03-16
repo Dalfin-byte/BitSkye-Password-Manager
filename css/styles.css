@@ -19,10 +19,11 @@ body {
   }
   .navbar-brand {
     font-weight: 700;
-    color: #20c997 !important;  /* Teal accent */
+    color: #9c9c9c !important;  /* Teal accent */
   }
   .nav-link {
     font-weight: 500;
+    color: #17a287;
   }
 
   /* Hero Section */
@@ -163,4 +164,21 @@ body {
     text-align: center;
     background-color: #131313;
     color: #7a7a7a;
+  }
+  .list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .list-group-item button {
+    flex-shrink: 0;
+  }
+  
+  .list-group-item span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-grow: 1;
+    margin-left: 10px; /* Add some space between the button and the text */
   }

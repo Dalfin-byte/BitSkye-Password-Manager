@@ -58,6 +58,16 @@ function getRandomInt(max) {
     strengthText.textContent = `Entropy: ${entropy.toFixed(2)} bits — ${strengthLabel}`;
   }
 
+  function copyToClipboard(password) {
+    const tempInput = document.createElement('input');
+    tempInput.value = password;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    alert('Password copied to clipboard');
+  }
+  
   document.addEventListener("DOMContentLoaded", function() {
     const lengthSlider = document.getElementById("lengthSlider");
     const lengthValue = document.getElementById("lengthValue");
@@ -69,12 +79,12 @@ function getRandomInt(max) {
     const generateBtn = document.getElementById("generateBtn");
     const passwordList = document.getElementById("passwordList");
     const strengthSection = document.getElementById("strengthSection");
-
+  
     // Update the displayed length value
     lengthSlider.addEventListener("input", function() {
       lengthValue.textContent = lengthSlider.value;
     });
-
+  
     // Generate passwords on button click
     generateBtn.addEventListener("click", function() {
       const length = parseInt(lengthSlider.value);
@@ -85,21 +95,24 @@ function getRandomInt(max) {
         punctuation: punctuationToggle.checked
       };
       const count = parseInt(multipleCount.value);
-
+    
       // Clear previous results
       passwordList.innerHTML = "";
-
+    
       // Calculate and display strength for a sample password
       const entropy = calculateEntropy(length, options);
       evaluateStrength(entropy);
       strengthSection.style.display = "block";
-
+    
       // Generate and display the requested number of passwords
       for (let i = 0; i < count; i++) {
         const pwd = generatePassword(length, options);
         const li = document.createElement("li");
-        li.className = "list-group-item bg-dark text-light";
-        li.textContent = pwd;
+        li.className = "list-group-item bg-dark text-light d-flex justify-content-between align-items-center";
+        li.innerHTML = `
+          <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('${pwd}')">Copy</button>
+          <span>${pwd}</span>
+        `;
         passwordList.appendChild(li);
       }
     });

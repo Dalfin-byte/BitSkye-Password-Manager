@@ -37,9 +37,12 @@
     <!-- Hero Section -->
     <header id="hero" class="hero">
       <h1>BitSkye: Empower Your Security</h1>
-      <p>BitSkye is a open-source password generator. It uses one of the most <b>SECURE</b> enctyption named: xChaCha20</p>
+      <p>BitSkye is a open-source password generator. It uses one of the best encryption available</p>
       <button class="btn hero-btn" onclick="document.getElementById('generator').scrollIntoView({behavior: 'smooth'});">
         Get Started
+      </button>
+      <button class="btn hero-btn" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'});">
+        Learn More
       </button>
     </header>
 
@@ -51,7 +54,7 @@
           <div class="col-md-4 mb-4">
             <i class="fas fa-lock fa-2x"></i>
             <h5 class="mt-2">Secure Generation</h5>
-            <p>Utilizes cryptographically secure methods to create robust passwords.</p>
+            <p>Utilizes cryptographically secure methods to create robust passwords using the <a href="https://nordpass.com/blog/xchacha20-encryption-vs-aes-256" target="_blank" ><code>xChaCha20</code></a> encryption.</p>
           </div>
           <div class="col-md-4 mb-4">
             <i class="fas fa-sliders-h fa-2x"></i>
@@ -143,6 +146,10 @@
                 <button id="generateBtn" class="btn btn-primary w-100">
                   <i class="fas fa-key"></i> Generate Passwords
                 </button>
+
+                <br>
+                <ul></ul>
+                <p style="color: red;">NOTE: The password previews may display the passwords wrong. Dont worry the passwords are full when copied. This is an ongoing error when generating multiple passwords.</p>
               </div>
             </div>
           </div>
@@ -270,7 +277,7 @@
           BitSkye offers a modern, feature‑rich, and user‑friendly solution.
         </p>
         <p>
-          <strong>GitHub Repository:</strong> <a href="https://github.com/Dalfin-byte/Dalfin-Byte.github.io" target="_blank">https://github.com/Dalfin-byte/Dalfin-Byte.github.io</a>
+          <strong>GitHub Repository:</strong> <a href="https://github.com/Dalfin-byte/BitSkye-Password-Manager" target="_blank">https://github.com/Dalfin-byte/BitSkye-Password-Manager</a>
         </p>
       </div>
     </section>
