@@ -67,6 +67,16 @@ function getRandomInt(max) {
     document.body.removeChild(tempInput);
     alert('Password copied to clipboard');
   }
+  function escapeHtml(text) {
+    const map = {
+      '<': '&lt;',
+      '>': '&gt;',
+      '&': '&amp;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+    return text.replace(/[<>&"'']/g, function(m) { return map[m]; });
+  }
   
   document.addEventListener("DOMContentLoaded", function() {
     const lengthSlider = document.getElementById("lengthSlider");
@@ -107,11 +117,12 @@ function getRandomInt(max) {
       // Generate and display the requested number of passwords
       for (let i = 0; i < count; i++) {
         const pwd = generatePassword(length, options);
+        const escapedPwd = escapeHtml(pwd);
         const li = document.createElement("li");
         li.className = "list-group-item bg-dark text-light d-flex justify-content-between align-items-center";
         li.innerHTML = `
           <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('${pwd}')">Copy</button>
-          <span>${pwd}</span>
+          <span>${escapedPwd}</span>
         `;
         passwordList.appendChild(li);
       }
