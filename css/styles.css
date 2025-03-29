@@ -64,16 +64,26 @@ body {
     margin-bottom: 1.5rem;
   }
 
+  /* General Section Styling */
+  .section {
+    padding: 40px 0;
+  }
+
   /* Card Styling */
   .card {
-    border: none;
-    border-radius: 0.5rem;
+    border-radius: 8px;
+    overflow: hidden;
     background-color: #1e1e1e;
     box-shadow: 0 4px 10px rgba(0,0,0,0.4);
   }
   .card-header {
+    font-size: 1.25rem;
+    font-weight: 500;
     background-color: transparent;
     border-bottom: 1px solid #333;
+  }
+  .card-body {
+    padding: 20px;
   }
 
   /* Input Range */
@@ -102,9 +112,20 @@ body {
     transition: width 0.3s;
   }
 
-  /* Sections */
-  .section {
-    padding: 3rem 1rem;
+  /* Password List Styling */
+  #passwordList {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  #passwordList .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #passwordList .btn {
+    font-size: 0.875rem;
   }
 
   /* FAQ Section */
@@ -181,4 +202,23 @@ body {
     white-space: nowrap;
     flex-grow: 1;
     margin-left: 10px; /* Add some space between the button and the text */
+  }
+  .breadcrumb {
+    background-color: #1e1e1e00;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: transparent;
+  }
+  .breadcrumb a {
+    color: #20c99600;
+  }
+  .breadcrumb-item.active {
+    color: #20c99600;
+  }
+  .breadcrumb-item a:hover {
+    text-decoration: underline;
+  }
+  .breadcrumb-item+.breadcrumb-item::before {
+    color: #20c99600;
   }
